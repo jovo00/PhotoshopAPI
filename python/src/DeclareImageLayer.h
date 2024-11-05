@@ -486,7 +486,7 @@ void declareImageLayer(py::module& m, const std::string& extension) {
 
     imageLayer.def("get_image_data", [](Class& self, const bool do_copy)
         {
-            auto data = self.getImageData(do_copy);
+            auto data = self.image_data(do_copy);
             std::unordered_map<int, py::array_t<T>> outData;
             for (auto& [key, value] : data)
             {
@@ -614,7 +614,7 @@ void declareImageLayer(py::module& m, const std::string& extension) {
 
     imageLayer.def_property_readonly("image_data", [](Class& self)
         {
-			auto data = self.getImageData(true);
+			auto data = self.image_data(true);
 			std::unordered_map<int, py::array_t<T>> outData;
 			for (auto& [key, value] : data)
 			{
