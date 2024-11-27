@@ -5,15 +5,17 @@
 
 PSAPI_NAMESPACE_BEGIN
 
+enum class RendererType {
+    Vulkan
+};
 
-class RendererContext {
+class Renderer {
 public:
-    RendererContext() = default;
-    virtual ~RendererContext() = default;
+    virtual ~Renderer() = default;
 
     virtual void init() = 0;
 
-    static std::shared_ptr<RendererContext> create();
+    static std::shared_ptr<Renderer> create(RendererType type);
 };
 
 PSAPI_NAMESPACE_END

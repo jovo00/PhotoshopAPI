@@ -1,0 +1,2 @@
+add_executable(RenderDocument main.cpp)
+target_link_libraries(RenderDocument PRIVATE PhotoshopAPI)

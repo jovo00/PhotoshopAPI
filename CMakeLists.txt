@@ -72,6 +72,9 @@ add_subdirectory (thirdparty/simdutf)
 add_library(tcb_span INTERFACE)
 target_include_directories(tcb_span SYSTEM INTERFACE thirdparty/compatibility)
 
+# Add glm
+add_subdirectory(thirdparty/glm)
+
 # Projects
 # --------------------------------------------------------------------------
 if(PSAPI_BUILD_STATIC)
@@ -92,6 +95,7 @@ if(PSAPI_BUILD_EXAMPLES)
     add_subdirectory (PhotoshopExamples/ModifyLayerStructure)
     add_subdirectory (PhotoshopExamples/ProgressCallbacks)
     add_subdirectory (PhotoshopExamples/ReplaceImageData)
+    add_subdirectory (PhotoshopExamples/RenderDocument)
 endif()
 if(PSAPI_BUILD_DOCS)
     if(NOT PSAPI_BUILD_PYTHON)

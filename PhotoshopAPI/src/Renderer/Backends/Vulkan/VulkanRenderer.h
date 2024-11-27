@@ -5,10 +5,10 @@
 
 PSAPI_NAMESPACE_BEGIN
 
-class VulkanContext final : public Renderer {
+class VulkanRenderer final : public Renderer {
 public:
-    VulkanContext() = default;
-    ~VulkanContext() override = default;
+    VulkanRenderer() = default;
+    ~VulkanRenderer() override = default;
 
     void init() override;
 };
