@@ -10,7 +10,7 @@ set_property(TARGET blosc2_static PROPERTY POSITION_INDEPENDENT_CODE 1)
 set_property(TARGET libdeflate_static PROPERTY POSITION_INDEPENDENT_CODE 1)
 
 target_include_directories(PhotoshopAPI PUBLIC include src src/Util)
-target_link_libraries(PhotoshopAPI PUBLIC Blosc2::blosc2_static blosc2_include mio::mio-headers tcb_span libdeflate::libdeflate_static libdeflate_include simdutf glm::glm)
+target_link_libraries(PhotoshopAPI PUBLIC Blosc2::blosc2_static blosc2_include mio::mio-headers tcb_span libdeflate::libdeflate_static libdeflate_include simdutf glm::glm Vulkan::Vulkan VulkanMemoryAllocator)
 
 if(MSVC)
 	target_compile_options(PhotoshopAPI PRIVATE /MP /DNOMINMAX)
@@ -19,7 +19,8 @@ if(MSVC)
     # w44062 is for if a switch misses some enum members.
     # w44464 is for #include containing .. in the path
     # w45264 is for using std:move when returning a temporary.
-    target_compile_options(PhotoshopAPI PRIVATE /W4 /WX /w44062 /w44464 /w45264)
+    # Suppress some more warnings to compile VMA successfully
+    target_compile_options(PhotoshopAPI PRIVATE /W4 /WX /w44062 /w44464 /w45264 /wd4100 /wd4189 /wd4324 /wd4127)
 else()
     target_compile_options(PhotoshopAPI PUBLIC -O3)
     include(CheckCXXCompilerFlag)

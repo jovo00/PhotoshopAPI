@@ -75,6 +75,12 @@ target_include_directories(tcb_span SYSTEM INTERFACE thirdparty/compatibility)
 # Add glm
 add_subdirectory(thirdparty/glm)
 
+# Find Vulkan package
+find_package(Vulkan REQUIRED)
+
+# Add Vulkan Memory ALlocator
+add_subdirectory(thirdparty/vma)
+
 # Projects
 # --------------------------------------------------------------------------
 if(PSAPI_BUILD_STATIC)

@@ -1,12 +1,14 @@
 #include "VulkanRenderer.h"
 
-#include "Logger.h"
+#include "VulkanUtil.h"
 
 PSAPI_NAMESPACE_BEGIN
 
 void VulkanRenderer::init()
 {
-    PSAPI_LOG("Renderer", "Vulkan Renderer initialized");
+    m_Context = std::make_shared<VulkanContext>();
+
+    VK_LOG("Renderer initialized");
 }
 
 PSAPI_NAMESPACE_END
